@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dear Rasmalai... 💌</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      color: #fff;
+      overflow: hidden;
+      background: linear-gradient(-45deg, #ffdde1, #ee9ca7, #a1c4fd, #c2ffd8);
+      background-size: 600% 600%;
+      animation: gradientShift 30s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1 {
+      font-size: 3.2em;
+      margin-top: 80px;
+      text-shadow: 0 0 30px rgba(255,255,255,0.9);
+      animation: fadeIn 2s ease-out;
+    }
+
+    #typedText {
+      font-size: 1.3em;
+      max-width: 750px;
+      margin: 30px auto 80px;
+      white-space: pre-wrap;
+      border-right: 2px solid white;
+      overflow: hidden;
+      text-shadow: 0 0 15px rgba(255,255,255,0.6);
+      animation: fadeIn 2s ease-in-out;
+      min-height: 300px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    button {
+      padding: 16px 40px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      color: white;
+      background: #ff6f91;
+      box-shadow: 0 0 25px rgba(255,111,145,0.8);
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      animation: pulse 1.5s infinite, glow 2s infinite alternate;
+      z-index: 100;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 25px rgba(255,111,145,0.8); }
+      50% { transform: scale(1.05); box-shadow: 0 0 45px rgba(255,111,145,1); }
+    }
+
+    @keyframes glow {
+      0% { box-shadow: 0 0 20px rgba(255,111,145,0.6); }
+      100% { box-shadow: 0 0 60px rgba(255,111,145,1); }
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 20px;
+      opacity: 0.8;
+      pointer-events: none;
+      text-shadow: 0 0 8px rgba(255,255,255,0.8);
+      animation: floatUp linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-900px) scale(1.5); opacity: 0; }
+    }
+
+    .globe-section {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      width: 200px;
+      text-align: center;
+      z-index: 10;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    .globe-section img {
+      width: 100px;
+      border-radius: 50%;
+      box-shadow: 0 0 25px rgba(255,255,255,0.4), 0 0 50px rgba(0,255,255,0.3);
+      animation: bounce 4s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .globe-message {
+      font-size: 1em;
+      margin-top: 10px;
+      color: #fff;
+      text-shadow: 0 0 15px rgba(255,255,255,0.8);
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🌍 Globe + Romantic Message -->
+  <div class="globe-section">
+    <img src="https://copilot.microsoft.com/th/id/BCO.c6cd0188-9202-452b-8aae-10fa354147fd.png" alt="Globe">
+    <div class="globe-message">
+      You're my world, my everything.<br>
+      Live for you, my Jaan. 💖
+    </div>
+  </div>
+
+  <!-- 💌 Header + Message -->
+  <h1>Dear Rasmalai,</h1>
+  <div id="typedText"></div>
+
+  <!-- 💖 Button -->
+  <button onclick="window.location.href='hehe.html'">Next 💖</button>
+
+  <!-- 🎵 Background Music -->
+  <audio id="bgMusic" loop>
+    <source src="pyc-music-close-to-you(chosic.com).mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    const messageLines = [
+      "Jaan,",
+      "Thank you… for loving me in ways words can’t fully capture.",
+      "Your Boyfriend’s Day post felt like a quiet promise, and that letter—like your heart speaking straight to mine.",
+      "I’ve read it more times than I’ll admit, and each time, it wraps me in your warmth.",
+      "You make me feel safe, chosen, deeply loved.",
+      "Even on days I forget myself, you remind me who I am.",
+      "You didn’t just make my day… you made my heart do little happy dances.",
+      "Reading your letter felt like sunshine poured straight into my soul.",
+      "You always know how to make me feel special, and I hope you know how much that means to me.",
+      "You turn ordinary moments into magic, and I still don’t know how I got so lucky but I promise I’ll keep trying to deserve you....",
+      "Thank you for being my calm in chaos, my softness in a hard world, my home.",
+      "Thank you for being my calm, my softness, my home.",
+      "I love you endlessly—and I’ll keep loving you in every way I know how.",
+      "With you, I already have everything… phir aur kya chahiye?"
+    ];
+
+    const typedDiv = document.getElementById("typedText");
+    let lineIndex = 0;
+
+    function typeLine(line, i = 0) {
+      if (i < line.length) {
+        typedDiv.innerHTML += line[i];
+        setTimeout(() => typeLine(line, i + 1), 25);
+      } else {
+        typedDiv.innerHTML += "\n";
+        lineIndex++;
+        if (lineIndex < messageLines.length) {
+          setTimeout(() => typeLine(messageLines[lineIndex]), 400);
+        }
+      }
+    }
+
+    // Start message typing after short delay
+    setTimeout(() => {
+      typeLine(messageLines[lineIndex]);
+    }, 800);
+
+    // Floating hearts
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerText = "❤️";
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.style.top = window.innerHeight + "px";
+      heart.style.fontSize = (15 + Math.random() * 20) + "px";
+      heart.style.color = `hsl(${Math.random() * 360}, 100%, 75%)`;
+      heart.style.animationDuration = (6 + Math.random() * 4) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 10000);
+    }, 300);
+
+    // Mouse trail hearts
+    document.addEventListener('mousemove', e => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerText = "💖";
+      heart.style.left = e.clientX + (Math.random() * 40 - 20) + "px";
+      heart.style.top = e.clientY + (Math.random() * 40 - 20) + "px";
+      heart.style.fontSize = (10 + Math.random() * 20) + "px";
+      heart.style.color = `hsl(${Math.random() * 360}, 100%, 75%)`;
+      heart.style.opacity = 0.9;
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 1500);
+    });
+
+    // Start background music after first click
+    const music = document.getElementById("bgMusic");
+    document.addEventListener('click', function startMusic() {
+      music.play().catch(err => console.log("Autoplay blocked:", err));
+      document.removeEventListener('click', startMusic);
+    });
+  </script>
+</body>
+</html>
